@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Survey Response Form Layout">
+		<message>
+          <![CDATA[Survey Response Form Layout]]>
+		</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field name="task" type="hidden" default="take_survey"/>
+			<field name="skey" type="text" label="Survey Key" description="Enter survey key. Use this form only for private surveys with valid survey key which you can get from invite page under manual invitation tab."/>
+		</fieldset>
+	</fields>
+</metadata>

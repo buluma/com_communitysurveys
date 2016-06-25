@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Community Surveys Layout">
+		<message>
+			<![CDATA[COM_COMMUNITYSURVEYS_DEFAULT_LAYOUT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<state>
+		<name>Community Surveys Layout</name>
+		<description>Community Surveys Home Page</description>
+	</state>
+</metadata>

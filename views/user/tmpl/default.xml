@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Community Surveys User Layout">
+		<message>
+			<![CDATA[COM_COMMUNITYSURVEYS_USER_LAYOUT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<state>
+		<name>Community Surveys User Layout</name>
+		<description>Displays the surveys and responses submitted by the user (can be treated as user account page).</description>
+	</state>
+	
+	<fields name="params">
+	</fields>
+</metadata>
