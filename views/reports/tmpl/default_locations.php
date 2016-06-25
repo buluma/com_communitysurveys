@@ -34,7 +34,7 @@ Joomla.checkAll = function(global){
 </script>
 <div id="cj-wrapper">
 	
-	<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
+	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 
 	<h2 class="page-header margin-bottom-10"><?php echo JText::_('LBL_LOCATIONS').': '.$this->escape($this->item->title);?></h2>
 

@@ -28,7 +28,7 @@ $doc->addScriptDeclaration('google.load("visualization", "1", {packages:["corech
 
 <div id="cj-wrapper" class="container-fuild">
 	
-	<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
+	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 	
 	<?php if(!$this->print):?>
 	<div class="well">

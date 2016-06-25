@@ -406,17 +406,19 @@ class CommunitySurveysModelSurvey extends JModelLegacy {
     	$survey->alias = $app->input->post->getString('alias', null);
     	$survey->catid = $app->input->post->getInt('catid', 0);
     	$survey->created_by = $app->input->post->getInt('userid', 0);
-    	$survey->private_survey = $app->input->post->getInt('survey-type', 1);
+    	$survey->private_survey = $app->input->post->getInt('survey-type', 0);
     	$survey->anonymous = $app->input->post->getInt('response-type', 1);
     	$survey->public_permissions = $app->input->post->getInt('show-result', 0);
     	$survey->display_template = $app->input->post->getInt('show-template', 1);
     	$survey->skip_intro = $app->input->post->getInt('skip-intro', 0);
     	$survey->display_notice = $app->input->post->getInt('display-notice', 1);
     	$survey->display_progress = $app->input->post->getInt('display-progress', 1);
-    	$survey->notification = $app->input->post->getInt('notification', 1);
+    	$survey->notification = $app->input->post->getInt('notification', 0);
     	$survey->backward_navigation = $app->input->post->getInt('backward-navigation', 1);
-    	$survey->publish_up = $app->input->post->getString('publish-up', '0000-00-00 00:00:00');
-    	$survey->publish_down = $app->input->post->getString('publish-down', '0000-00-00 00:00:00');
+    	/*$survey->publish_up = $app->input->post->getString('publish-up', '0000-00-00 00:00:00');
+    	$survey->publish_down = $app->input->post->getString('publish-down', '0000-00-00 00:00:00');*/
+    	$survey->publish_up = $app->input->post->getString('publish-up');
+    	$survey->publish_down = $app->input->post->getString('publish-down');
     	$survey->max_responses = $app->input->post->getInt('max-responses', 1);
     	$survey->redirect_url = $app->input->post->getString('redirect-url', '');
     	$survey->introtext = CJFunctions::get_clean_var('introtext', $html);
@@ -435,8 +437,10 @@ class CommunitySurveysModelSurvey extends JModelLegacy {
     		return $survey;
     	}
     	
-    	/*$publish_up = (!empty($survey->publish_up) && $survey->publish_up != '0000-00-00 00:00:00') ? JFactory::getDate($survey->publish_up, $app->getCfg('offset'))->toSql() : '0000-00-00 00:00:00';
-    	$publish_down = (!empty($survey->publish_down) && $survey->publish_down != '0000-00-00 00:00:00') ? JFactory::getDate ($survey->publish_down, $app->getCfg('offset'))->toSql() : '0000-00-00 00:00:00';*/
+    	/*$publish_up = (!empty($survey->publish_up) && $survey->publish_up != '2016-00-00 00:00:00') ? JFactory::getDate($survey->publish_up, $app->getCfg('offset'))->toSql() : '2016-00-00 00:00:00';
+
+    	$publish_down = (!empty($survey->publish_down) && $survey->publish_down != '2017-00-00 00:00:00') ? JFactory::getDate ($survey->publish_down, $app->getCfg('offset'))->toSql() : '2017-00-00 00:00:00';*/
+
     	$mySqlRedirectUrl = empty($survey->redirect_url) ? 'null' : $this->_db->quote($survey->redirect_url);
 
     	if($survey->id > 0){

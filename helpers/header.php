@@ -27,13 +27,35 @@ $catparam = !empty($catparam) ? $catparam : '';
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</a>
-			 
+			 <!-- custom add -->
+			 	<?php
+					$cat_id = $this->category->id;
+					$user  = JFactory::getUser();
+
+					$user_groups = $user->groups;
+
+					//print_r($user_groups);
+
+					//echo "<p>Your name is {$user->name}, your email is {$user->email}, and your username is {$user->username}</p>";
+
+					//if ($user->authorise('core.edit', 'com_communitysurveys'))
+
+					if ($cat_id == "131") {
+					    echo '<a class="brand" href="index.php?option=com_communitysurveys&view=form&task=form">';
+						echo 'Create New Survey';
+						echo '</a>';
+					} else {
+					    echo '<a class="brand" href="index.php?option=com_communitysurveys&view=form&task=form">';
+						echo 'Create New Training';
+						echo '</a>';
+					}
+				?>
+			 <!-- end custom add -->
 			<a class="brand hidden" href="<?php echo JRoute::_(!empty($this->brand_url) ? $this->brand_url : '#');?>">
 				<?php echo $this->escape($this->brand);?>
 			</a>
-
 			<!--create a survey -->
-			<a class="brand" href="index.php?option=com_communitysurveys&view=form&task=form">
+			<a class="brand hidden" href="index.php?option=com_communitysurveys&view=form&task=form">
 				<?php echo 'Add New'?>
 			</a>
 			<!-- create a survey -->

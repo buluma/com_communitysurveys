@@ -31,7 +31,6 @@ foreach ($categories as $id=>$category){
 	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 
 	<div class="container-fluid no-space-left no-space-right surveys-wrapper">
-			
 		<form name="survey-form" class="survey-form" action="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=form&task=save'.$itemid)?>" method="post">
 		
 			<fieldset>
@@ -102,11 +101,11 @@ foreach ($categories as $id=>$category){
 									<i class="icon-info-sign tooltip-hover" title="<?php echo JText::_('HLP_STARTDATE');?>"></i>
 								</label>
 								<div class="controls">
-									<input id="datepicker" name="publish-up" type="calendar" class="input-medium hidden" value="<?php echo $this->escape($this->item->publish_1up);?>">
+									<input id="datepicker" name="publish-upx" type="calendar" class="input-medium hidden" value="<?php echo $this->escape($this->item->publish_up);?>">
 									
 									<?php //custom date picker
-									//echo JHTML::calendar('','cal_field_name','cal_field_id','%Y-%m-%d');
-									echo JHTML::calendar(date("Y-m-d"),'publish_up', 'date', '%Y-%m-%d',array('size'=>'8','maxlength'=>'10','class'=>' validate[\'required\']',));
+									echo JHTML::calendar(date("Y-m-d"),'date','publish_up','%Y-%m-%d');
+									//echo JHTML::calendar(date("Y-m-d"),'publish_up', 'date', '%Y-%m-%d',array('size'=>'8','maxlength'=>'10','class'=>' validate[\'required\']',));
 										?>
 								</div>
 							</div>
@@ -116,11 +115,11 @@ foreach ($categories as $id=>$category){
 									<i class="icon-info-sign tooltip-hover" title="<?php echo JText::_('HLP_ENDDATE');?>"></i>
 								</label>
 								<div class="controls">
-									<input name="publish-down" type="text" class="input-medium hidden" value="<?php echo $this->escape($this->item->publish_1down);?>">
+									<input name="publish-downx" type="text" class="input-medium hidden" value="<?php echo $this->escape($this->item->publish_1down);?>">
 
 									<?php //custom date picker
-									//echo JHTML::calendar('','cal_field_name','cal_field_id','%Y-%m-%d');
-									echo JHTML::calendar(date("Y-m-d"),'publish_down', 'date', '%Y-%m-%d',array('size'=>'8','maxlength'=>'10','class'=>' validate[\'required\']',));
+									echo JHTML::calendar(date("Y-m-d"),'date','publish_down','%Y-%m-%d');
+									//echo JHTML::calendar(date("Y-m-d"),'publish_down', 'date', '%Y-%m-%d',array('size'=>'8','maxlength'=>'10','class'=>' validate[\'required\']',));
 										?>
 								</div>
 							</div>
@@ -131,8 +130,8 @@ foreach ($categories as $id=>$category){
 								</label>
 								<div class="controls">
 									<select name="survey-type" size="1" class="input-medium">
-										<option value="1" <?php echo $this->item->private_survey == '0' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_PRIVATE_SURVEY');?></option>
-										<option value="0" <?php echo $this->item->private_survey == '1' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_PUBLIC_SURVEY');?></option>
+										<? /*<option value="1" <?php echo $this->item->private_survey == '0' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_PRIVATE_SURVEY');?></option>*/?>
+										<option value="0" <?php echo $this->item->private_survey == '0' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_PUBLIC_SURVEY');?></option>
 									</select>
 								</div>
 							</div>
@@ -143,7 +142,7 @@ foreach ($categories as $id=>$category){
 								</label>
 								<div class="controls">
 									<select name="response-type" size="1" class="input-medium">
-										<option value="1" <?php echo $this->item->anonymous == '1' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_ANONYMOUS');?></option>
+										<?/*<option value="1" <?php echo $this->item->anonymous == '1' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_ANONYMOUS');?></option>*/?>
 										<option value="0" <?php echo $this->item->anonymous == '0' ? 'selected="selected"':'';?>><?php echo JText::_('LBL_ONYMOUS');?></option>
 									</select>
 								</div>
@@ -179,8 +178,8 @@ foreach ($categories as $id=>$category){
 								</label>
 								<div class="controls">
 									<select name="skip-intro" size="1" class="input-medium">
-										<option value="1" <?php echo $this->item->skip_intro == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>
-										<option value="0" <?php echo $this->item->skip_intro == '1' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>
+										<option value="1" <?php echo $this->item->skip_intro == '1' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>
+										<?/*<option value="0" <?php echo $this->item->skip_intro == '1' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>*/?>
 									</select>
 								</div>
 							</div>
@@ -191,8 +190,8 @@ foreach ($categories as $id=>$category){
 								</label>
 								<div class="controls">
 									<select name="display-notice" size="1" class="input-medium">
-										<option value="1" <?php echo $this->item->display_notice == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>
-										<option value="0" <?php echo $this->item->display_notice == '1' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>
+										<?/*<option value="1" <?php echo $this->item->display_notice == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>*/?>
+										<option value="0" <?php echo $this->item->display_notice == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>
 									</select>
 								</div>
 							</div>
@@ -203,8 +202,8 @@ foreach ($categories as $id=>$category){
 								</label>
 								<div class="controls">
 									<select name="notification" size="1" class="input-medium">
-										<option value="1" <?php echo $this->item->notification == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>
-										<option value="0" <?php echo $this->item->notification == '1' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>
+										<?/*<option value="1" <?php echo $this->item->notification == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JYES');?></option>*/?>
+										<option value="0" <?php echo $this->item->notification == '0' ? 'selected="selected"':'';?>><?php echo JText::_('JNO');?></option>
 									</select>
 								</div>
 							</div>
@@ -308,7 +307,8 @@ foreach ($categories as $id=>$category){
 	$(document).ready(
 	  
 	  /* This is the function that will get executed after the DOM is fully loaded */
-	  function () {
+	  //function () {
+	  	jQuery(function($) {
 	    $( "#datepicker" ).datepicker({
 	      changeMonth: true,//this option for allowing user to select month
 	      changeYear: true //this option for allowing user to select from year range
