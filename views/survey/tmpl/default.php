@@ -141,9 +141,59 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 								<?php endif;?>
 								<?php if(($user->id == $item->created_by) || $user->authorise('survey.manage', S_APP_NAME)):?>
 								<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=form&task=invite&id='.$item->id.':'.$item->alias.$itemid)?>"><?php echo JText::_('LBL_INVITE');?></a>
-								<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=dashboard&id='.$item->id.':'.$item->alias.$itemid)?>"><?php echo JText::_('LBL_REPORTS');?></a>
+
+								<?/*<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=dashboard&id='.$item->id.':'.$item->alias.$itemid)?>"><?php echo JText::_('LBL_REPORTS');?></a>*/?>
 								<?php endif;?>
+
+								<!--show my surveys -->
+									<?php if($user->authorise('core.create', S_APP_NAME)):?>
+										<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=user&task=my_surveys'.$user_itemid);?>">
+											<i class="icon-user"></i> <?php echo JText::_('LBL_MY_SURVEYS');?>
+										</a>
+									<?php endif;?>
+
+
+								<!-- end show surveys -->
 							</small>
+
+							<!-- edit reports view -->
+								<?php
+									$user  = JFactory::getUser();
+
+									$user_groups = $user->groups;
+
+									//print_r($user_groups);
+
+									//echo "<p>Your name is {$user->name}, your email is {$user->email}, and your username is {$user->username}</p>";
+ 
+									if ($user->authorise('core.create', 'com_communitysurveys'))
+									{
+										echo "<p>You may create surveys.</p>";
+									}
+									else
+									{
+										echo "<p>You may not create surveys.</p>";
+									}
+
+									if ($user->authorise('core.edit', 'com_communitysurveys'))
+									{
+										echo "<p>You may edit surveys.</p>";
+									}
+									else
+									{
+										echo "<p>You may not edit surveys.</p>";
+									}
+								 
+									if ($user->authorise('core.edit.own', 'com_communitysurveys'))
+									{
+										echo "<p>You may edit your own surveys.</p>";
+									}
+									else
+									{
+										echo "<p>You may not edit your own surveys.</p>";
+									}
+								?>
+							<!-- end reports -->
 						</div>
 					</div>
 				</div>

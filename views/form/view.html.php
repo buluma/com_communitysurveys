@@ -62,12 +62,15 @@ class CommunitySurveysViewForm extends JViewLegacy {
 					$survey = new stdClass();
 					$survey->id = $survey->catid = $survey->duration = $survey->skip_intro = $survey->max_responses = 
 						$survey->anonymous = $survey->public_permissions = 0;
-					$survey->show_answers = $survey->display_template = $survey->multiple_responses = $survey->backward_navigation = 
-						$survey->private_survey = $survey->display_notice = $survey->display_progress = $survey->notification = 1;
+					/*$survey->show_answers = $survey->display_template = $survey->multiple_responses = $survey->backward_navigation = 
+						$survey->private_survey = $survey->display_notice = $survey->display_progress = $survey->notification = 1;*/
+						$survey->show_answers = $survey->display_template = $survey->multiple_responses = $survey->backward_navigation = 
+						$survey->private_survey = $survey->display_notice = $survey->display_progress = 1;
+						$survey->notification = 0;
 					$survey->title = $survey->introtext = $survey->endtext = $survey->custom_header = $survey->alias = $survey->redirect_url = '';
 					//$survey->publish_up = $survey->publish_down = '0000-00-00 00:00:00';
 					$survey->created_by = $user->id;
-					$survey->restriction = 'cookie';
+					$survey->restriction = '';
 					$survey->tags = array();
 				}
 				

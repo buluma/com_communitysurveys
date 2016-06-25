@@ -44,7 +44,7 @@ if(!empty($this->item->stats->daily)){
 
 <div id="cj-wrapper">
 	
-	<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
+	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 
 	<h2 class="page-header margin-bottom-10"><?php echo $this->escape($this->item->title);?></h2>
 	<div class="survey-description"><?php echo CJFunctions::process_html($this->item->introtext, $bbcode, $content)?></div>

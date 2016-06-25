@@ -24,7 +24,7 @@ $generator = new SurveyQuestionResults($wysiwyg, $bbcode, $content);
 
 <div id="cj-wrapper">
 	
-	<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
+	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 	<?php if(!$this->print):?>
 	<div class="well">
 		<a class="btn pull-right" 
