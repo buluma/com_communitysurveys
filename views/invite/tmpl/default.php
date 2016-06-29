@@ -130,7 +130,10 @@ CJFunctions::load_jquery(array('libs'=>array('validate','form')));
 		</div>
 		<div class="modal-body"></div>
 		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo JText::_('LBL_CLOSE');?></button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true" onclick="javascript:window.location='<?php echo 'index.php'; ?>'"><?php echo JText::_('LBL_CLOSE');?></button>
+			<!--<a href="index.php" class="btn" data-dismiss="modal" aria-hidden="true">
+				<i class="icon-remove"></i> <?php echo JText::_('LBL_CLOSE');?>
+			</a>-->
 		</div>
 	</div>
 	

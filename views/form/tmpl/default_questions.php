@@ -28,7 +28,7 @@ CJFunctions::load_jquery(array('libs'=>array('validate', 'ui', 'form'), 'theme'=
 
 	<!-- end survey toolbox -->
 	<!-- start container -->
-		<div id="container">
+		<div id="container" class="container">
 			<div class="rowx">
 	  			<div class="col-xs-6 col-md-3"><div class="survey-toolbox">
 	  			<h4>Question Type</h4>
@@ -318,11 +318,11 @@ CJFunctions::load_jquery(array('libs'=>array('validate', 'ui', 'form'), 'theme'=
 									<?php echo JText::_('LBL_REMOVE');?>
 								</a>
 							</li>
-							<li>
+							<!--<li>
 								<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=form&task=finalize&id='.$this->item->id.$itemid)?>">
 									<i class="icon-hdd"></i> <?php echo JText::_('LBL_FINISH');?>
 								</a>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 				</div>
@@ -331,7 +331,15 @@ CJFunctions::load_jquery(array('libs'=>array('validate', 'ui', 'form'), 'theme'=
 			</div>
 	</div>
 	<!-- end container -->
-
+	<!-- start save button-->
+	<div class="container">
+		<div class="pull-right">
+			<a class="button btn btn-success btn-lg" href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=form&task=finalize&id='.$this->item->id.$itemid)?>">
+									<i class="icon-hdd"></i> <?php echo 'Done';?>
+			</a>					
+		</div>
+	</div>
+	<!-- end save button-->
 	<div class="container-fluid no-space-left no-space-right margin-top-10">
 		<div class="row-fluid">
 			<div class="span12">
@@ -340,7 +348,7 @@ CJFunctions::load_jquery(array('libs'=>array('validate', 'ui', 'form'), 'theme'=
 				
 				
 				
-				<div id="message-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="message-modal" class="modal hide fade erics" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h3 id="myModalLabel"><?php echo JText::_('LBL_ALERT');?></h3>
@@ -348,6 +356,7 @@ CJFunctions::load_jquery(array('libs'=>array('validate', 'ui', 'form'), 'theme'=
 					<div class="modal-body"></div>
 					<div class="modal-footer">
 						<button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> <?php echo JText::_('LBL_CLOSE');?></button>
+				
 					</div>
 				</div>
 				

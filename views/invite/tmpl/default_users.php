@@ -12,9 +12,6 @@ defined('_JEXEC') or die();
 $itemid = CJFunctions::get_active_menu_id();
 ?>
 <div class="invite-registered-wrapper">
-	<div class="margin-top-10 margin-bottom-10">
-		<button type="button" class="btn btn-primary btn-invite-registered-users"><i class="icon-share icon-white"></i> <?php echo JText::_('LBL_INVITE');?></button>
-	</div>
 	
 	<div class="margin-top-20">
 
@@ -70,8 +67,11 @@ $itemid = CJFunctions::get_active_menu_id();
 					</div>
 				</td>
 			</tr>
-		</table>
+		</table><div class="margin-top-10 margin-bottom-10">
+		<button style="float: right;" type="button" class="btn btn-primary btn-invite-registered-users"><i class="icon-share icon-white"></i> <?php echo JText::_('LBL_INVITE');?></button>
 	</div>
+	</div> <br />
+	<br />
 	
 	<div style="display: none;">
 		<span id="url_search_users"><?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=invite&task=search_users'.$itemid)?></span>

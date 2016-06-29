@@ -157,7 +157,7 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 							</small>
 
 							<!-- edit reports view -->
-								<?php
+								<?php/*
 									$user  = JFactory::getUser();
 
 									$user_groups = $user->groups;
@@ -192,7 +192,7 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 									{
 										echo "<p>You may not edit your own surveys.</p>";
 									}
-								?>
+								*/?>
 							<!-- end reports -->
 						</div>
 					</div>
