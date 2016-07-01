@@ -2,7 +2,6 @@
 *Joomla Surveys Component*
 
 [![Build Status](https://travis-ci.org/buluma/com_communitysurveys.svg?branch=master)
-[![Coverage Status](https://travis-ci.org/buluma/com_communitysurveys.svg?branch=master)](https://coveralls.io/github/buluma/nodejs-ci-ctl?branch=master)
 
 ## License
 Animate.css is licensed under the MIT license. (http://opensource.org/licenses/MIT)
