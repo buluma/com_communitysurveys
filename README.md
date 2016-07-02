@@ -1,6 +1,5 @@
 #Community Surveys
 ![Build Status](https://travis-ci.org/buluma/com_communitysurveys.svg?branch=master)
-*Joomla Surveys Component*
 
 ## License
 Community Surveys is licensed under the MIT license. (http://opensource.org/licenses/MIT)
