@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @version		$Id: default.php 01 2012-04-30 11:37:09Z maverick $
  * @package		CoreJoomla.Surveys
@@ -29,10 +29,10 @@ $formfields = new SurveyFormFields($wysiwyg, $bbcode, $content);
 <div id="cj-wrapper">
 	<div<?php echo $this->hide_template == 1 ? ' class="full-screen"' : '';?>>
 		<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
-		
+
 		<h2 class="page-header"><?php echo $this->escape($this->item->title);?></h2>
 		<div class="custom-pageheader"><?php echo CJFunctions::process_html($this->item->custom_header, $bbcode, $content);?></div>
-		
+
 		<?php if($this->item->display_progress == 1):?>
 		<div class="row-fluid margin-bottom-20 margin-top-20">
 			<div class="span4 pull-right">
@@ -43,11 +43,11 @@ $formfields = new SurveyFormFields($wysiwyg, $bbcode, $content);
 			</div>
 		</div>
 		<?php endif;?>
-		
+
 		<form id="response-form" action="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=response&task=save_response&id='.$this->item->id.':'.$this->item->alias.$itemid)?>" method="post">
 			<input type="hidden" name="rid" value="<?php echo $this->item->response_id;?>">
-			
-			<?php 
+
+			<?php
 			$class = '';
 			foreach ($this->item->questions as $qid=>$question){
 				switch($question->question_type){
@@ -91,25 +91,25 @@ $formfields = new SurveyFormFields($wysiwyg, $bbcode, $content);
 				}
 			}
 			?>
-			
+
 			<div class="alert alert-error hide" id="txt_errors_alert"><i class="icon-warning-sign"></i> <?php echo JText::_('TXT_RESPONSE_CONTAINS_ERRORS');?></div>
-			
+
 			<div class="well center">
 				<div class="form-inline">
-					<a class="btn" href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=survey'.$itemid)?>"><?php echo JText::_('LBL_CANCEL');?></a>
-					
+					<a class="btn hidden" href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=survey'.$itemid)?>"><?php echo JText::_('LBL_CANCEL');?></a>
+
 					<?php if(!$this->item->start && $this->item->backward_navigation == '1'):?>
 					<button class="btn" type="button" id="btn-previous" data-loading-text="<?php echo JText::_('TXT_LOADING');?>">
 						<i class="icon icon-hand-left"></i> <?php echo JText::_('LBL_PREVIOUS');?>
 					</button>
 					<?php endif;?>
-					
+
 					<button class="btn btn-primary" type="button" id="btn_submit" data-loading-text="<?php echo JText::_('TXT_LOADING');?>">
-						<i class="icon icon-hand-right icon-white"></i> <?php echo $this->item->finalize ? JText::_('LBL_FINISH') : JText::_('LBL_NEXT');?>
+						<i class="icon icon-hand-right icon-white"></i> <?php echo $this->item->finalize ? JText::_('Submit') : JText::_('LBL_NEXT');?>
 					</button>
 				</div>
 			</div>
-			
+
 			<input name="id" type="hidden" value="<?php echo $this->item->id;?>">
 			<input name="rid" type="hidden" value="<?php echo $this->item->response_id;?>">
 			<input name="pid" type="hidden" value="<?php echo $this->item->pid;?>">
@@ -117,7 +117,7 @@ $formfields = new SurveyFormFields($wysiwyg, $bbcode, $content);
 			<input name="finalize" type="hidden" value="<?php echo $this->item->finalize;?>">
 			<input name="pageno" type="hidden" value="<?php echo $this->item->pageno;?>">
 		</form>
-		
+
 		<input type="hidden" id="cjpageid" value="survey_response">
 		<div class="hide" style="display: none">
 			<span id="default_error_required"><?php echo JText::_('MSG_QUESTION_MANDATORY')?></span>
