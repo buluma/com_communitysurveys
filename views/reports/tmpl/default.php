@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @version		$Id: default_reports.php 01 2012-04-30 11:37:09Z maverick $
  * @package		CoreJoomla.Surveys
@@ -23,9 +23,9 @@ $document->addScript('https://www.google.com/jsapi');
 
 $data = array();
 if(!empty($this->item->stats->daily)){
-	
+
 	foreach($this->item->stats->daily as $stat){
-		
+
 		$data[] = "['".$stat->created_on."', ".$stat->responses."]";
 	}
 
@@ -43,12 +43,12 @@ if(!empty($this->item->stats->daily)){
 ?>
 
 <div id="cj-wrapper">
-	
+
 	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 
 	<h2 class="page-header margin-bottom-10"><?php echo $this->escape($this->item->title);?></h2>
-	<div class="survey-description"><?php echo CJFunctions::process_html($this->item->introtext, $bbcode, $content)?></div>
-	
+	<div class="survey-description hidden"><?php echo CJFunctions::process_html($this->item->introtext, $bbcode, $content)?></div>
+
 	<table class="table table-bordered table-striped table-hover margin-top-20">
 		<tr>
 			<td><?php echo JText::_('LBL_TOTAL_COMPLETED_RESPONSES');?></td>
@@ -68,7 +68,7 @@ if(!empty($this->item->stats->daily)){
 				</a>
 			</td>
 		</tr>
-		<tr>
+		<?/*<tr>
 			<td><?php echo JText::_('LBL_TOTAL_COUNTRIES_PARTICIPATED');?></td>
 			<td><?php echo $this->item->stats->countries;?></td>
 			<td>
@@ -77,7 +77,7 @@ if(!empty($this->item->stats->daily)){
 				</a>
 			</td>
 		</tr>
-		<tr>
+		<?/*<tr>
 			<td><?php echo JText::_('LBL_TOTAL_BROWSERS_USED');?></td>
 			<td><?php echo $this->item->stats->browsers;?></td>
 			<td>
@@ -94,9 +94,9 @@ if(!empty($this->item->stats->daily)){
 					<?php echo JText::_('LBL_VIEW_OS_REPORT');?>
 				</a>
 			</td>
-		</tr>
+		</tr>*/?>
 	</table>
-	
+
 	<h3 class="page-header margin-bottom-10"><?php echo JText::_('LBL_DAILY_RESPONSE_CHART');?></h3>
 	<div id="tab-daily-chart" style="overflow: hidden;">
 		<?php if(!empty($this->item->stats->daily)):?>
@@ -105,17 +105,17 @@ if(!empty($this->item->stats->daily)){
 		<?php echo JText::_('MSG_NO_DATA_AVAILABLE');?>
 		<?php endif;?>
 	</div>
-	
+<br />
 	<h3 class="page-header no-margin-bottom"><?php echo JText::_('LBL_LATEST_RESPONSES');?></h3>
-	
+
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>#</th>
 				<th><?php echo JText::_('LBL_USERNAME');?></th>
-				<th width="20%"><?php echo JText::_('LBL_COUNTRY');?></th>
-				<th width="20%"><?php echo JText::_('LBL_DATE');?></th>
-				<th width="20%"><?php echo JText::_('LBL_VIEW_REPORT');?></th>
+				<?/*<th width="20%"><?php echo JText::_('LBL_COUNTRY');?></th>*/?>
+				<th width="30%"><?php echo JText::_('LBL_DATE');?></th>
+				<th width="30%"><?php echo JText::_('LBL_VIEW_REPORT');?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -123,7 +123,7 @@ if(!empty($this->item->stats->daily)){
 			<tr>
 				<td><?php echo $i + 1;?></td>
 				<td><?php echo $item->created_by > 0 ? $this->escape($item->username) : JText::_('LBL_GUEST');?></td>
-				<td><?php echo $this->escape($item->country_name);?></td>
+			<?/*	<td><?php echo $this->escape($item->country_name);?></td>*/?>
 				<td><?php echo $item->created;?></td>
 				<td>
 					<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=view_response&id='.$this->item->id.':'.$this->item->alias.'&rid='.$item->id.$itemid)?>">
