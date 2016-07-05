@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @version		$Id: default.php 01 2012-04-30 11:37:09Z maverick $
  * @package		CoreJoomla.Surveys
@@ -23,11 +23,11 @@ $generator = new SurveyQuestionResults($wysiwyg, $bbcode, $content);
 ?>
 
 <div id="cj-wrapper">
-	
+
 	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 	<?php if(!$this->print):?>
 	<div class="well">
-		<a class="btn pull-right" 
+		<a class="btn pull-right"
 			onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=800,height=480,directories=no,location=no'); return false;"
 			href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=view_response&id='.$this->item->id.':'.$this->item->alias.'&rid='.$this->response_id.'&tmpl=component&print=1'.$itemid);?>">
 			<i class="icon-print"></i> <?php echo JText::_('JGLOBAL_PRINT');?>
@@ -42,12 +42,12 @@ $generator = new SurveyQuestionResults($wysiwyg, $bbcode, $content);
 	<?php else:?>
 	<script type="text/javascript">window.print();</script>
 	<?php endif;?>
-	
+
 	<h2 class="page-header margin-bottom-10"><?php echo $this->escape($this->item->title);?></h2>
-	<div class="survey-description"><?php echo CJFunctions::process_html($this->item->introtext, $bbcode, $content)?></div>
-	
+	<div class="survey-description hidden"><?php echo CJFunctions::process_html($this->item->introtext, $bbcode, $content)?></div>
+
 	<div class="results-wrapper margin-top-20">
-	<?php 
+	<?php
 	$class = '';
 	foreach($this->item->questions as $item){
 		switch ($item->question_type){

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @version		$Id: default_responses.php 01 2012-04-30 11:37:09Z maverick $
  * @package		CoreJoomla.Surveys
@@ -33,14 +33,14 @@ Joomla.checkAll = function(global){
 //-->
 </script>
 <div id="cj-wrapper">
-	
+
 	<?php //include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 
 	<h2 class="page-header margin-bottom-10"><?php echo JText::_('LBL_RESPONSES').': '.$this->escape($this->item->title);?></h2>
 
 	<form name="adminForm" id="adminForm" action="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=responses&id='.$this->item->id.':'.$this->item->alias.$itemid)?>" method="post">
-	
-		<div class="form-inline margin-bottom-20 well">
+
+		<div class="form-inline margin-bottom-20 well" style="display: inline-table;width: 100%;">
 			<div class="pull-right">
 				<select name="limit" size="1" onchange="document.adminForm.submit();" class="input-mini margin-bottom-10">
 					<option value="5"<?php echo $this->lists['limit'] == 5 ? ' selected="selected"' : '';?>>5</option>
@@ -56,8 +56,8 @@ Joomla.checkAll = function(global){
 					<option value="0"<?php echo $this->lists['state'] == 0 ? ' selected="selected"' : '';?>><?php echo JText::_('LBL_PENDING');?></option>
 				</select>
 				<input
-					onchange="this.adminForm.submit();" 
-					type="text" name="search" value="<?php echo $this->lists['search'];?>" 
+					onchange="this.adminForm.submit();"
+					type="text" name="search" value="<?php echo $this->lists['search'];?>"
 					placeholder="<?php echo JText::_('LBL_SEARCH');?>" class="input-medium margin-bottom-10">
 			</div>
 			<a class="btn margin-bottom-10" href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=dashboard&id='.$this->item->id.':'.$this->item->alias.$itemid)?>">
@@ -69,16 +69,16 @@ Joomla.checkAll = function(global){
 			<button type="button" class="btn btn-pdf-download margin-bottom-10"><i class="icon-download"></i> PDF</button>
 			<button class="btn btn-delete-responses margin-bottom-10" type="button"><i class="icon-remove"></i> <?php echo JText::_('LBL_DELETE_SELECTED');?></button>
 		</div>
-		
+
 		<div class="alert alert-error alert-no-selection hide"><i class="icon-warning-sign"></i> <?php echo JText::_('MSG_SELECT_ROWS_TO_CONTINUE');?></div>
-		
+
 		<table class="table table-striped table-condensed table-hover">
 			<thead>
 				<tr>
 					<th width="20"><?php echo JText::_( '#' ); ?></th>
 					<th width="20"><input type="checkbox" name="toggle" value="" onclick="Joomla.checkAll(this);" /></th>
 					<th><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_USERNAME' ), 'username', $this->lists['order_dir'], $this->lists['order']); ?></th>
-					<th width="15%"><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_COUNTRY' ), 'cr.country_name', $this->lists['order_dir'], $this->lists['order']); ?></th>
+					<?/*<th width="15%"><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_COUNTRY' ), 'cr.country_name', $this->lists['order_dir'], $this->lists['order']); ?></th>*/?>
 					<th width="15%" class="hidden-phone"><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_DATE' ), 'r.created', $this->lists['order_dir'], $this->lists['order']); ?></th>
 					<th width="15%" class="hidden-phone"><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_COMPLETED' ), 'r.completed', $this->lists['order_dir'], $this->lists['order']); ?></th>
 					<th width="5%"><?php echo JHTML::_( 'grid.sort', JText::_( 'LBL_STATUS' ), 'r.completed', $this->lists['order_dir'], $this->lists['order']); ?></th>
@@ -91,13 +91,13 @@ Joomla.checkAll = function(global){
 					<td><?php echo $this->pagination->getRowOffset( $i ); ?></td>
 					<td><?php echo JHTML::_( 'grid.id', $i, $row->response_id );?></td>
 					<td><?php echo $this->escape($row->username);?></td>
-					<td><?php echo $this->escape($row->country_name);?></td>
+				<?/*	<td><?php echo $this->escape($row->country_name);?></td>*/?>
 					<td class="hidden-phone"><?php echo $row->responded_on;?></td>
 					<td class="hidden-phone"><?php echo $row->completed;?></td>
 					<td>
 						<div class="center tooltip-hover" title="<?php echo $row->finished ? JText::_('LBL_COMPLETED') : JText::_('LBL_PENDING');?>">
 							<i class="<?php echo $row->finished == 1 ? 'icon-ok-sign success' : 'icon-spinner icon-spin';?>"></i>
-						</div> 
+						</div>
 					</td>
 					<td>
 						<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=view_response&id='.$this->item->id.':'.$this->item->alias.'&rid='.$row->response_id.$itemid)?>" target="_blank">
@@ -109,11 +109,11 @@ Joomla.checkAll = function(global){
 			</tbody>
 		</table>
 		<div class="row-fluid">
-			<?php 
+			<?php
 			echo CJFunctions::get_pagination(
-					'index.php?option='.S_APP_NAME.'&view=reports&task=responses&id='.$this->item->id.':'.$this->item->alias.$itemid, 
-					$this->pagination->get('pages.start'), 
-					$this->pagination->get('pages.current'), 
+					'index.php?option='.S_APP_NAME.'&view=reports&task=responses&id='.$this->item->id.':'.$this->item->alias.$itemid,
+					$this->pagination->get('pages.start'),
+					$this->pagination->get('pages.current'),
 					$this->pagination->get('pages.total'),
 					$this->pagination->get('limit'),
 					true
@@ -125,7 +125,7 @@ Joomla.checkAll = function(global){
 		<input type="hidden" name="filter_order" id="filter_order" value="<?php echo $this->lists['order']; ?>" />
 		<input type="hidden" name="filter_order_Dir" id="filter_order_Dir" value="<?php echo $this->lists['order_dir']; ?>" />
 	</form>
-	
+
 	<div style="display: none;">
 		<input type="hidden" name="cjpageid" id="cjpageid" value="report_responses">
 		<span id="url_remove_responses"><?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=remove_responses&id='.$this->item->id.':'.$this->item->alias.$itemid)?></span>
