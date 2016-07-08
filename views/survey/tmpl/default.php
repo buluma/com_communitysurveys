@@ -98,7 +98,9 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 					<?php if($this->params->get('display_response_count', 1) == 1):?>
 					<div class="pull-left hidden-phone thumbnail num-box">
 						<h2 class="num-header"><?php echo $item->responses;?></h2>
-						<span class="muted"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></span>
+						<?/*<span class="muted"><a href="index.php?option=com_communitysurveys&view=reports&task=consolidated&id='..'"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></a></span>*/?>
+						<span class="muted"><a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=consolidated&id='.$item->id.':'.$item->alias.$itemid);?>" target="_blank"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></a></span>
+						<? //echo $item->id;?>
 					</div>
 					<?php endif;?>
 					
@@ -157,7 +159,7 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 							</small>
 
 							<!-- edit reports view -->
-								<?php
+								<?php/*
 									$user  = JFactory::getUser();
 
 									$user_groups = $user->groups;
@@ -192,7 +194,7 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 									{
 										echo "<p>You may not edit your own surveys.</p>";
 									}
-								?>
+								*/?>
 							<!-- end reports -->
 						</div>
 					</div>
