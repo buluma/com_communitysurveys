@@ -59,7 +59,7 @@ if(!empty($this->item->stats->daily)){
 				</a>
 			</td>
 		</tr>
-		<tr>
+		<?/*<tr>
 			<td><?php echo JText::_('LBL_TOTAL_RESPONSES');?></td>
 			<td><?php echo $this->item->stats->total_responses;?></td>
 			<td>
@@ -68,7 +68,7 @@ if(!empty($this->item->stats->daily)){
 				</a>
 			</td>
 		</tr>
-		<?/*<tr>
+		<tr>
 			<td><?php echo JText::_('LBL_TOTAL_COUNTRIES_PARTICIPATED');?></td>
 			<td><?php echo $this->item->stats->countries;?></td>
 			<td>
@@ -113,7 +113,7 @@ if(!empty($this->item->stats->daily)){
 			<tr>
 				<th>#</th>
 				<th><?php echo JText::_('LBL_USERNAME');?></th>
-				<?/*<th width="20%"><?php echo JText::_('LBL_COUNTRY');?></th>*/?>
+				<?/* <th width="20%"><?php echo JText::_('LBL_COUNTRY');?></th>*/?>
 				<th width="30%"><?php echo JText::_('LBL_DATE');?></th>
 				<th width="30%"><?php echo JText::_('LBL_VIEW_REPORT');?></th>
 			</tr>
@@ -123,7 +123,7 @@ if(!empty($this->item->stats->daily)){
 			<tr>
 				<td><?php echo $i + 1;?></td>
 				<td><?php echo $item->created_by > 0 ? $this->escape($item->username) : JText::_('LBL_GUEST');?></td>
-			<?/*	<td><?php echo $this->escape($item->country_name);?></td>*/?>
+			<?/*<td><?php echo $this->escape($item->country_name);?></td>*/?>
 				<td><?php echo $item->created;?></td>
 				<td>
 					<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=view_response&id='.$this->item->id.':'.$this->item->alias.'&rid='.$item->id.$itemid)?>">
