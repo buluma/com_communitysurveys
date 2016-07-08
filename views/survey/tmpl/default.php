@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @version		$Id: default.php 01 2012-04-30 11:37:09Z maverick $
  * @package		CoreJoomla.Surveys
@@ -25,18 +25,18 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 	<div class="container-fluid no-space-left no-space-right surveys-wrapper">
 		<div class="row-fluid">
 			<div class="span12">
-			
+
 				<?php echo CJFunctions::load_module_position('surveys-list-above-categories');?>
-				
+
 				<?php if($this->params->get('display_cat_list', 1) == 1 || !empty($this->page_header)):?>
 				<div class="well">
-					
+
 					<?php if(!empty($this->categories) || !empty($this->category)):?>
 					<h2 class="page-header margin-bottom-10 no-space-top">
 						<?php echo JText::_('LBL_CATEGORIES').(!empty($this->category) ? ': <small>'.$this->escape($this->category->title).'</small>' : '');?>
-						
+
 						<?php if($this->params->get('enable_rss_feed', 0) == '1'):?>
-						<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=survey&task=feed&format=feed'.$catparam.$itemid);?>" 
+						<a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=survey&task=feed&format=feed'.$catparam.$itemid);?>"
 							title="<?php echo JText::_('LBL_RSS_FEED')?>" class="tooltip-hover">
 							<i class="cjicon-feed"></i>
 						</a>
@@ -45,19 +45,19 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 					<?php elseif(!empty($this->page_header)):?>
 					<h2 class="page-header margin-bottom-10 no-space-top"><?php echo $this->escape($this->page_header);?></h2>
 					<?php endif;?>
-					
+
 					<?php if(!empty($this->page_description)):?>
 					<div class="margin-bottom-10"><?php echo $this->page_description;?></div>
 					<?php endif;?>
-					
-					<?php 
+
+					<?php
 					if($this->params->get('display_cat_list', 1) == 1){
-	
+
 						echo CJFunctions::get_joomla_categories_table_markup($this->categories, array(
 								'max_columns'=>$this->params->get('num_cat_list_columns', 3), 'max_children'=>0, 'base_url'=>$this->page_url, 'menu_id'=>$itemid));
-					} 
+					}
 					?>
-					
+
 					<?php if($this->params->get('dispay_search_box', 1) == 1):?>
 					<div class="row-fluid margin-top-10">
 						<div class="span12">
@@ -73,10 +73,10 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 						</div>
 					</div>
 					<?php endif;?>
-					
+
 				</div>
 				<?php endif;?>
-				
+
 				<?php echo CJFunctions::load_module_position('surveys-list-below-categories');?>
 				<?php include_once JPATH_COMPONENT.DS.'helpers'.DS.'header.php';?>
 				<?php if(!empty($this->items)):?>
@@ -85,25 +85,39 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 					<?php if($this->params->get('user_avatar') != 'none'):?>
 					<div class="pull-left margin-right-10 avatar hidden-phone">
 						<?php echo CJFunctions::get_user_avatar(
-							$this->params->get('user_avatar'), 
-							$item->created_by, 
-							$this->params->get('user_display_name'), 
+							$this->params->get('user_avatar'),
+							$item->created_by,
+							$this->params->get('user_display_name'),
 							$this->params->get('avatar_size'),
 							$item->email,
 							array('class'=>'thumbnail tooltip-hover', 'title'=>$item->username),
 							array('class'=>'media-object', 'style'=>'height:'.$this->params->get('avatar_size').'px'));?>
 					</div>
 					<?php endif;?>
-					
+
 					<?php if($this->params->get('display_response_count', 1) == 1):?>
 					<div class="pull-left hidden-phone thumbnail num-box">
 						<h2 class="num-header"><?php echo $item->responses;?></h2>
 						<?/*<span class="muted"><a href="index.php?option=com_communitysurveys&view=reports&task=consolidated&id='..'"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></a></span>*/?>
-						<span class="muted"><a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=consolidated&id='.$item->id.':'.$item->alias.$itemid);?>" target="_blank"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></a></span>
+						<!-- allow only created_by and super users -->
+						<?php
+							$user  = JFactory::getUser();
+							$user_groups = $user->groups;
+							if ($user->authorise('core.create', 'com_communitysurveys'))
+							{?>
+								<span class="muted"><a href="<?php echo JRoute::_('index.php?option='.S_APP_NAME.'&view=reports&task=consolidated&id='.$item->id.':'.$item->alias.$itemid);?>" target="_blank"><?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?></a></span>
+						<?	}
+							else
+							{?>
+							<?php echo $item->responses == 1 ? JText::_('LBL_RESPONSE') : JText::_('LBL_RESPONSES');?>
+							<? }
+							?>
+						<!-- end allow only created_by and super users -->
+
 						<? //echo $item->id;?>
 					</div>
 					<?php endif;?>
-					
+
 					<div class="media-body">
 
 						<h4 class="media-heading">
@@ -111,30 +125,30 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 								<?php echo $this->escape($item->title)?>
 							</a>
 							<?php if($page_id == 10): // all surveys?>
-							<i 
-								class="<?php echo $item->private_survey == 1 ? 'icon-eye-close' : 'icon-eye-open'?> tooltip-hover" 
+							<i
+								class="<?php echo $item->private_survey == 1 ? 'icon-eye-close' : 'icon-eye-open'?> tooltip-hover"
 								title="<?php echo $item->private_survey == 1 ? JText::_('LBL_PRIVATE_SURVEY') : JText::_('LBL_PUBLIC_SURVEY');?>"></i>
 							<?php endif;?>
 						</h4>
-						
+
 						<?php if($this->params->get('display_meta_info', 1) == 1):?>
 						<div class="muted">
 							<small>
-							<?php 
+							<?php
 							$category_name = JHtml::link(
 								JRoute::_($this->page_url.'&id='.$item->catid.':'.$item->category_alias.$itemid),
 								$this->escape($item->category_title));
-							$user_name = $item->created_by > 0 
+							$user_name = $item->created_by > 0
 								? CJFunctions::get_user_profile_link($this->params->get('user_avatar'), $item->created_by, $this->escape($item->username))
 								: $this->escape($item->username);
 							$formatted_date = CJFunctions::get_formatted_date($item->created);
-							
+
 							echo JText::sprintf('TXT_LIST_ITEM_META', $user_name, $category_name, $formatted_date);
 							?>
 							</small>
 						</div>
 						<?php endif;?>
-						
+
 						<div class="muted admin-controls">
 							<small>
 								<?php if(($user->id == $item->created_by && $user->authorise('core.edit.own', S_APP_NAME)) || $user->authorise('survey.manage', S_APP_NAME)):?>
@@ -159,57 +173,21 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 							</small>
 
 							<!-- edit reports view -->
-								<?php/*
-									$user  = JFactory::getUser();
-
-									$user_groups = $user->groups;
-
-									//print_r($user_groups);
-
-									//echo "<p>Your name is {$user->name}, your email is {$user->email}, and your username is {$user->username}</p>";
- 
-									if ($user->authorise('core.create', 'com_communitysurveys'))
-									{
-										echo "<p>You may create surveys.</p>";
-									}
-									else
-									{
-										echo "<p>You may not create surveys.</p>";
-									}
-
-									if ($user->authorise('core.edit', 'com_communitysurveys'))
-									{
-										echo "<p>You may edit surveys.</p>";
-									}
-									else
-									{
-										echo "<p>You may not edit surveys.</p>";
-									}
-								 
-									if ($user->authorise('core.edit.own', 'com_communitysurveys'))
-									{
-										echo "<p>You may edit your own surveys.</p>";
-									}
-									else
-									{
-										echo "<p>You may not edit your own surveys.</p>";
-									}
-								*/?>
-							<!-- end reports -->
+								
 						</div>
 					</div>
 				</div>
 				<?php endforeach;?>
-				
+
 				<?php echo CJFunctions::load_module_position('surveys-list-above-pagination');?>
-				
+
 				<div class="row-fluid">
 					<div class="span12">
-						<?php 
+						<?php
 						echo CJFunctions::get_pagination(
-								$this->page_url.$catparam, 
-								$this->pagination->get('pages.start'), 
-								$this->pagination->get('pages.current'), 
+								$this->page_url.$catparam,
+								$this->pagination->get('pages.start'),
+								$this->pagination->get('pages.current'),
 								$this->pagination->get('pages.total'),
 								$this->pagination->get('limit'),
 								true
@@ -217,15 +195,15 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 						?>
 					</div>
 				</div>
-		
+
 				<?php else:?>
 				<div class="alert alert-info"><i class="icon-info-sign"></i> <?php echo JText::_('MSG_NO_RESULTS')?></div>
 				<?php endif;?>
-				
+
 				<?php echo CJFunctions::load_module_position('surveys-list-below-pagination');?>
 			</div>
 		</div>
-		
+
 		<div id="message-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -237,7 +215,7 @@ CJFunctions::load_jquery(array('libs'=>array('rating')));
 			</div>
 		</div>
 	</div>
-	
+
 	<div style="display: none;">
 		<input type="hidden" id="cjpageid" value="survey_list">
 		<div id="data-rating-noratemsg"><?php echo JText::_('LBL_RATING_NORATE_HINT');?></div>
