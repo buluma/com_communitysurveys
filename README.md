@@ -1,4 +1,4 @@
-#Community Surveys
+## Community Surveys
 ![Build Status](https://travis-ci.org/buluma/com_communitysurveys.svg?branch=master)
 
 ## License
