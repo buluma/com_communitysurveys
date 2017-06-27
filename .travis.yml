@@ -5,3 +5,17 @@ php:
 - 5.4
 - 5.6
 script: phpunit Test.php
+
+#notifications:
+#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
+    rooms:
+      - buluma:QWpyLHvuvJe5aduZtGs7euUa#travis-ci
+  email:
+    recipients:
+      - me@buluma.me.ke
+    on_success: always # default: change
+    on_failure: always # default: always
