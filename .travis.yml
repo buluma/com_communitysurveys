@@ -1,15 +1,5 @@
-group: edge
 language: php
 php: '5.5'
-
-matrix:
-  include:
-    - php: 5.2
-      dist: precise
-    - php: 5.3
-      dist: precise
-    - php: 5.5
-      dist: precise
 
 # Commands you want to run that will verify your build.
 script: phpunit Test.php
