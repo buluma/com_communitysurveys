@@ -18,6 +18,18 @@ matrix:
     - php: 5.5
     - php: 5.7
   fast_finish: true
+  
+ before_deploy:
+      # Set up git user name and tag this commit
+      - git config --local user.name "buluma"
+      - git config --local user.email "bulumaknight@gmail.com GIT USER EMAIL"
+      - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+      - git tag $TRAVIS_TAG
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "FILE TO UPLOAD"
+  skip_cleanup: true
 
 #notifications:
 #  webhooks: https://galaxy.ansible.com/api/v1/notifications/
