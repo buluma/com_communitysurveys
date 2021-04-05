@@ -6,6 +6,10 @@ php:
   - hhvm # on Trusty only
   - nightly
 
+# to run PHPUnit on HHVM, you have to explicitly install version 5.7 in your .travis.yml due to a compatibility issue between HHVM and PHP7
+before_script:
+  - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
+
 # Commands you want to run that will verify your build.
 script: phpunit Test.php
 
@@ -14,8 +18,9 @@ script: phpunit Test.php
 matrix:
   allow_failures:
     - php: 5.5
-    - php: 5.2
-    - php: 5.3
+    - php: 5.4
+    - php: 7.0
+    - nightly
   fast_finish: true
 
 #notifications:
