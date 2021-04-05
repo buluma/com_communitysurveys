@@ -1,7 +1,6 @@
 language: php
 php:
   - '5.6'
-  - hhvm # on Trusty only
 
 # to run PHPUnit on HHVM, you have to explicitly install version 5.7 in your .travis.yml due to a compatibility issue between HHVM and PHP7
 before_script:
